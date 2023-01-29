@@ -6,7 +6,7 @@ import { user_context } from "../contexts/user";
 import React from "react"
 import { useState } from "react";
 import cookie from "cookiejs";
-
+import Router from "next/router"
 export async function getServerSideProps(context) {
     if(context.req.cookies.username){   
         return {
@@ -54,7 +54,7 @@ let Register=()=>{
                 txt_area.current.innerHTML="registered successfuly!"
                 cookie.set(data.savedUser)
                 setTimeout(()=>{
-                    
+                    Router.push("halls")
                 },3000)
             }else{
                 txt_area.current.innerHTML=data.err.message ||data.err.code
