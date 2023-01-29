@@ -7,6 +7,7 @@ import React from "react"
 import { useState } from "react";
 import cookie from "cookiejs"
 import route from "next/router"
+import Cookies from 'js-cookie'
 export async function getServerSideProps(context) {
     if(context.req.cookies.username){   
         return {
@@ -42,7 +43,12 @@ let Login=()=>{
             if(data.data){
                 txt_area.current.setAttribute("style","color:#b38de4c2;")
                 txt_area.current.innerHTML=data.message
-                cookie.set(data.data)
+                //cookie.set(data.data)
+                Object.entries(data.data).forEach((item)=>{
+                    let [key,value]=item;
+                    Cookies.set(key,value)
+                    console.log(key,value)
+                })
                 setTimeout(()=>{
                     route.push("/halls")
                 },3000)

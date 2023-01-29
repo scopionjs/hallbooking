@@ -7,6 +7,7 @@ import React from "react"
 import { useState } from "react";
 import cookie from "cookiejs";
 import Router from "next/router"
+import Cookies from 'js-cookie'
 export async function getServerSideProps(context) {
     if(context.req.cookies.username){   
         return {
@@ -52,7 +53,12 @@ let Register=()=>{
             if(data.savedUser){
                 txt_area.current.setAttribute("style","color:#b38de4c2")
                 txt_area.current.innerHTML="registered successfuly!"
-                cookie.set(data.savedUser)
+                //cookie.set(data.savedUser)
+                Object.entries(data.savedUser).forEach((item)=>{
+                    let [key,value]=item;
+                    Cookies.set(key,value)
+                    console.log(key,value)
+                })
                 setTimeout(()=>{
                     Router.push("halls")
                 },3000)
