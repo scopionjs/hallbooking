@@ -41,7 +41,6 @@ let Login=()=>{
             })
             let data=await res.json()
             if(data.data){
-                console.log("hi",data.data)
                 txt_area.current.setAttribute("style","color:#b38de4c2;")
                 txt_area.current.innerHTML=data.message
                 //cookie.set(data.data)
@@ -54,7 +53,6 @@ let Login=()=>{
                     route.push("/halls")
                 },3000)
             }else{
-                console.log("hello",data)
                 txt_area.current.setAttribute("style","color:red;")
                 txt_area.current.innerHTML=data.message
             }

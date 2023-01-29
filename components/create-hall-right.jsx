@@ -29,7 +29,9 @@ let Create_hall_right=()=>{
                     );
                 //after uploading image
                 if(response){
-                    let res=await axios.post(user_ctx.api+"/create-hall",{name,capacity,description,price,amenities:amenities.split(","),images:[response.data.secure_url]})
+                    console.log(5)
+                    let res=await axios.post("/api/hello",{name,capacity,description,price,amenities:amenities.split(","),images:[response.data.secure_url]})
+                    console.log(6)
                 if(res.data.error){
                     txt_area.current.setAttribute("style","color:red;")
                     txt_area.current.innerHTML=res.data.error
