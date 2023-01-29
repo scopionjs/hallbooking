@@ -1,12 +1,12 @@
-export default function Footer() {
-  return (
-    <footer>
-      <div>
-        <p>
-          2022 all rights reserved. developed and designed by{" "}
-          <span>joseph siame</span> AKA <span>scopion js</span>
-        </p>
-      </div>
-    </footer>
-  );
+import { user_context } from "../contexts/user";
+import style from "../styles/footer.module.scss"
+import React from "react"
+let Footer=()=>{
+    let user_ctx=React.useContext(user_context)
+    return(
+        <div className={style.footer_wrapper}>
+            <p>copyrights allrights reserved.2023</p>
+        </div>
+    )
 }
+export default Footer;
